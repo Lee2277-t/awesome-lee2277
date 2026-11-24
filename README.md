@@ -8,6 +8,9 @@
 
 ---
 
+> **会计/审计专业的同学**：看下面「审计与财务工具」那一节。五个工具都是双击运行，
+> 不用装 Python、不用登录、不会把客户数据传到任何地方。实习前一天装上就够用。
+
 ## DeepSeek Harness 插件
 
 装上就能在 Harness 里直接调用，无需另开窗口。
@@ -27,16 +30,41 @@
 
 ## 审计与财务工具
 
-这几个是为真实工作写的：双击打开就能用，数据留在本机，不联网、不上传。
+**审计实习最费时间的五件事，各有一个工具。下载即用，不装软件、不联网、客户数据不出本机。**
 
-| 仓库 | 解决什么问题 |
-|---|---|
-| [gouji-reconciler](https://github.com/Lee2277-t/gouji-reconciler) | 科目余额表按科目编码汇总成报表项目，与试算表逐项对账，找出差异与未映射科目 |
-| [vouching-sampler](https://github.com/Lee2277-t/vouching-sampler) | 认表、抽样、生成抽凭表、回录评估，一条流水线 |
-| [cutoff-tester](https://github.com/Lee2277-t/cutoff-tester) | 按资产负债表日切分单据流水，生成截止测试底稿 |
-| [confirmation-letter](https://github.com/Lee2277-t/confirmation-letter) | 从往来余额表生成函证控制表和询证函 |
-| [audit-reconciliation-desk](https://github.com/Lee2277-t/audit-reconciliation-desk) | 应收应付逐家核对净额的双边对账核销，网页版双击即用，另有桌面版 |
-| [credit-doc-field-review](https://github.com/Lee2277-t/credit-doc-field-review) | 抽取信贷资料里的字段，点字段能定位回原文，逐项确认后导出结果表 |
+| 工具 | 解决什么问题 | 下载 |
+|---|---|---|
+| [底稿填充助手](https://github.com/Lee2277-t/workpaper-filler) | 序时账按客户汇总，填进底稿明细表，**公式一行不动**；填之前先告诉你填第几行到第几行 | [ZIP](https://github.com/Lee2277-t/workpaper-filler/releases/latest) |
+| [勾稽助手](https://github.com/Lee2277-t/gouji-reconciler) | 明细表 → 科目余额表 → 试算表三级勾稽，差异、未映射科目、单边项目逐项列出 | [ZIP](https://github.com/Lee2277-t/gouji-reconciler/releases/latest) |
+| [抽凭助手](https://github.com/Lee2277-t/vouching-sampler) | 认表、抽样、生成抽凭表、回录评估，一条流水线 | [ZIP](https://github.com/Lee2277-t/vouching-sampler/releases/latest) |
+| [截止测试助手](https://github.com/Lee2277-t/cutoff-tester) | 按资产负债表日切分单据流水，生成截止测试底稿 | [ZIP](https://github.com/Lee2277-t/cutoff-tester/releases/latest) |
+| [函证助手](https://github.com/Lee2277-t/confirmation-letter) | 从往来余额表生成函证控制表和询证函 | [ZIP](https://github.com/Lee2277-t/confirmation-letter/releases/latest) |
+
+![底稿填充助手](docs/workpaper.png)
+
+<sub>底稿填充助手：认不准版式就让你自己填行号，不会把客户写进账龄表。</sub>
+
+| 其他审计/财务工具 | 解决什么问题 | 下载 |
+|---|---|---|
+| [audit-reconciliation-desk](https://github.com/Lee2277-t/audit-reconciliation-desk) | 应收应付逐家核对净额的双边对账核销，网页版双击即用，另有桌面版 | [ZIP](https://github.com/Lee2277-t/audit-reconciliation-desk/releases/latest) |
+| [credit-doc-field-review](https://github.com/Lee2277-t/credit-doc-field-review) | 抽取信贷资料里的字段，点字段能定位回原文，逐项确认后导出结果表 | [ZIP](https://github.com/Lee2277-t/credit-doc-field-review/releases/latest) |
+
+<details>
+<summary><b>另外四个工具的界面（点开看）</b></summary>
+
+**勾稽助手** — 科目余额表 → 试算表，逐项对账
+![勾稽助手](docs/gouji.png)
+
+**抽凭助手** — 认表 → 抽样 → 抽凭表
+![抽凭助手](docs/vouching.png)
+
+**截止测试助手** — 按资产负债表日切分单据
+![截止测试助手](docs/cutoff.png)
+
+**函证助手** — 往来余额 → 函证控制表
+![函证助手](docs/letter.png)
+
+</details>
 
 ## 文档、翻译与媒体
 
