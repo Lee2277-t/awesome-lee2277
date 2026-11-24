@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>审计实习工具箱 · 离线小工具</title>
+<meta name="description" content="会计师事务所实习用得上的五个离线小工具：填底稿、勾稽、抽凭、截止测试、函证。双击即用，不联网，数据不出本机。">
+<style>
+  :root { --ink:#1d2129; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; --bg:#f7f8fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.65 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:1000px; margin:0 auto; padding:48px 24px 80px; }
+  h1 { font-size:34px; margin:0 0 8px; letter-spacing:-.5px; }
+  .lead { color:var(--muted); font-size:17px; margin:0 0 8px; }
+  .pills { margin:18px 0 40px; display:flex; gap:8px; flex-wrap:wrap; }
+  .pill { background:#fff; border:1px solid var(--line); border-radius:999px; padding:5px 14px; font-size:13px; color:#374151; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:22px; display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .card .txt { padding:26px 28px; }
+  .card .shot { background:#eef1f5; border-left:1px solid var(--line); overflow:hidden; max-height:340px; }
+  .card .shot img { width:100%; display:block; margin-top:-8px; }
+  .card h2 { font-size:21px; margin:0 0 6px; }
+  .card p { margin:0 0 14px; color:#4b5563; font-size:15px; }
+  .btns { display:flex; gap:10px; flex-wrap:wrap; }
+  a.btn { display:inline-block; padding:9px 18px; border-radius:9px; text-decoration:none; font-size:14px; font-weight:600; }
+  a.primary { background:var(--accent); color:#fff; }
+  a.ghost { background:#fff; color:var(--accent); border:1px solid #c7d2fe; }
+  .note { color:var(--muted); font-size:13px; margin-top:10px; }
+  footer { margin-top:44px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+  footer a { color:var(--accent); }
+  @media (max-width:760px) { .card { grid-template-columns:1fr; } .card .shot { border-left:0; border-top:1px solid var(--line); max-height:260px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>审计实习工具箱</h1>
+  <p class="lead">会计师事务所实习里最费时间的五件事，各有一个小工具。</p>
+  <div class="pills">
+    <span class="pill">不装软件</span>
+    <span class="pill">不联网</span>
+    <span class="pill">数据不出本机</span>
+    <span class="pill">双击 index.html 就能用</span>
+  </div>
+
+  <div class="card">
+    <div class="txt">
+      <h2>底稿填充助手</h2>
+      <p>序时账按客户汇总，填进底稿明细表的空白行，<b>表里自带的公式一行都不动</b>。<br>
+         填之前先告诉你「往第几行到第几行填」，你改了行号就严格照你给的填。</p>
+      <div class="btns">
+        <a class="btn primary" href="tools/workpaper/index.html">在线打开</a>
+        <a class="btn ghost" href="https://github.com/Lee2277-t/workpaper-filler/releases/latest">下载 ZIP</a>
+      </div>
+      <div class="note">填完生成 Excel 宏，在 Excel 里跑，格式和公式全部保真。</div>
+    </div>
+    <div class="shot"><img src="docs/workpaper.png" alt="底稿填充助手界面"></div>
+  </div>
+
+  <div class="card">
+    <div class="txt">
+      <h2>勾稽助手</h2>
+      <p>明细表 → 科目余额表 → 试算表，三级勾稽逐项对账。<br>
+         漏科目、重复计、单边项目，一次列全，给出行号。</p>
+      <div class="btns">
+        <a class="btn primary" href="tools/gouji/index.html">在线打开</a>
+        <a class="btn ghost" href="https://github.com/Lee2277-t/gouji-reconciler/releases/latest">下载 ZIP</a>
+      </div>
+      <div class="note">认错列可以切「高级」自己指定，工具不猜。</div>
+    </div>
+    <div class="shot"><img src="docs/gouji.png" alt="勾稽助手界面"></div>
+  </div>
+
+  <div class="card">
+    <div class="txt">
+      <h2>抽凭助手</h2>
+      <p>认表、设定总体与抽样、生成抽凭表、回录评估，一条流水线。<br>
+         大额全查 + 其余均匀抽样，金额越大越容易进样本。</p>
+      <div class="btns">
+        <a class="btn primary" href="tools/vouching/index.html">在线打开</a>
+        <a class="btn ghost" href="https://github.com/Lee2277-t/vouching-sampler/releases/latest">下载 ZIP</a>
+      </div>
+      <div class="note">没有数据也能点「用示例数据试一下」看效果。</div>
+    </div>
+    <div class="shot"><img src="docs/vouching.png" alt="抽凭助手界面"></div>
+  </div>
+
+  <div class="card">
+    <div class="txt">
+      <h2>截止测试助手</h2>
+      <p>按资产负债表日切分单据流水，生成截止测试底稿。<br>
+         期前／期后两边分开，跨期单据直接标出来。</p>
+      <div class="btns">
+        <a class="btn primary" href="tools/cutoff/index.html">在线打开</a>
+        <a class="btn ghost" href="https://github.com/Lee2277-t/cutoff-tester/releases/latest">下载 ZIP</a>
+      </div>
+    </div>
+    <div class="shot"><img src="docs/cutoff.png" alt="截止测试助手界面"></div>
+  </div>
+
+  <div class="card">
+    <div class="txt">
+      <h2>函证助手</h2>
+      <p>从往来余额表生成函证控制表和询证函。<br>
+         选样、编号、发函记录、回函登记一张表跟下来。</p>
+      <div class="btns">
+        <a class="btn primary" href="tools/letter/index.html">在线打开</a>
+        <a class="btn ghost" href="https://github.com/Lee2277-t/confirmation-letter/releases/latest">下载 ZIP</a>
+      </div>
+    </div>
+    <div class="shot"><img src="docs/letter.png" alt="函证助手界面"></div>
+  </div>
+
+  <footer>
+    <p><b>在线打开</b>和<b>下载 ZIP</b>是同一份代码，都是纯前端页面，你的表格只在浏览器里读，不会上传到任何地方。
+       介意联网的话就下载 ZIP，断网也能用。</p>
+    <p>更多工具（文档、系统、AI 插件）：<a href="https://github.com/Lee2277-t/awesome-lee2277">awesome-lee2277</a>　·　
+       许可证 AGPL-3.0</p>
+  </footer>
+
+</div>
+</body>
+</html>

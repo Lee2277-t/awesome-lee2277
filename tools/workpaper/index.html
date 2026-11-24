@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>底稿填充助手</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <h1>底稿填充助手 <span class="ver">v0.4.3</span></h1>
+  <p class="sub">把序时账按客户汇总，填进底稿明细表的空格。<b>插行时，扩展合计范围前会询问确认。</b>文件只在本机浏览器里读，不上传。</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>① 底稿模板</h2>
+    <div class="row">
+      <input type="file" id="tplFile" accept=".xlsx,.xlsm">
+    </div>
+    <p class="hint" id="tplInfo"></p>
+    <div class="row" id="sheetRow">
+      <label>填哪张明细表 <select id="sheetSel"></select></label>
+      <label>往哪一组填 <select id="groupSel"></select></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>② 数据源（科目余额表、序时账）</h2>
+    <div class="row">
+      <input type="file" id="dataFile" accept=".xlsx,.xls,.csv">
+    </div>
+    <p class="hint" id="dataInfo"></p>
+    <div class="row">
+      <label>科目 <input type="text" id="subject" placeholder="1221 或 其他应收款" size="18"></label>
+      <span class="hint">只按这个科目汇总，不会全表乱填</span>
+    </div>
+    <div class="row" style="align-items:flex-start;margin-top:12px">
+      <label style="flex-direction:column;align-items:flex-start">
+        期初金额（可选）
+        <textarea id="openBox" rows="4" cols="46"
+          placeholder="从 Excel 复制两列粘进来：客户名 + 期初金额&#10;华远建设	1,000.00&#10;东方贸易	500.00"></textarea>
+      </label>
+      <span class="hint" style="max-width:280px">
+        明细表的「期末金额」多半是 <code>=期初+借−贷</code> 的公式。<br>
+        不填的话期初按 0 算，客户有年初余额时期末会偏小。
+      </span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>③ 核对后生成</h2>
+    <div id="infoBox"></div>
+    <div id="statBox" class="stats"></div>
+    <div class="row" style="margin-top:14px;align-items:center">
+      <label>填写范围：第 <input type="number" id="rowFrom" min="1" style="width:76px"> 行 —
+        第 <input type="number" id="rowTo" min="1" style="width:76px"> 行</label>
+      <button id="useAuto" class="ghost" type="button">用自动判断</button>
+    </div>
+    <p class="hint" id="rangeHint">自动判断只是建议。底稿版式千差万别，<b>请按行号核对一下</b>；
+    填了就以你给的为准（行号填错/填反/落在表头时会退回自动判断）。</p>
+    <div class="row" style="margin-top:14px">
+      <button id="genVba" type="button" disabled>下载填充宏（推荐）</button>
+      <button id="genCsv" class="ghost" type="button" disabled>下载明细行 CSV</button>
+      <button id="genXlsx" class="ghost" type="button" disabled>直接生成填好的 xlsx</button>
+    </div>
+    <p class="hint" id="genInfo"></p>
+    <details id="macroDetails" class="hidden">
+      <summary>看一眼将要粘贴的宏（前 20 行）</summary>
+      <pre id="macroPreview"></pre>
+      <p class="hint">如果 Excel 里模块的开头和这里不一样，说明那不是本工具生成的，
+      整段删掉重新粘贴即可。模块级变量（<code>Private xxx As ...</code>）必须都排在
+      <code>Sub</code> 之前，VBE 才不会报「End Sub 后面只能出现注释」。</p>
+    </details>
+    <p class="hint"><b>为什么推荐宏</b>：宏只写目标单元格，底稿的格式、合并、批注、图表全都不动；
+    直接生成 xlsx 会重写整个文件，格式可能变。</p>
+  </section>
+
+  <section class="card hidden" id="planPanel">
+    <h2>将写入的内容</h2>
+    <div class="tableWrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>底稿行</th><th>客户 / 项目名称</th><th>期初</th><th>本期借方</th><th>本期贷方</th><th>期末</th></tr>
+        </thead>
+        <tbody id="planBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>只填空行和空格：明细表里已经有内容、或那一行带公式的位置，一律跳过。</p>
+</footer>
+
+<script src="../vendor/xlsx.full.min.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
